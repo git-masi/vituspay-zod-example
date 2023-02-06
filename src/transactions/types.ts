@@ -1,5 +1,13 @@
 import { z } from "zod";
 
+export const TransactionId = z.string().uuid();
+
+export type TransactionIdType = z.infer<typeof TransactionId>;
+
+export const TransactionAmount = z.number().int().min(1);
+
+export type TransactionAmountType = z.infer<typeof TransactionAmount>;
+
 export const TransactionStatus = z.enum([
   "link sent",
   "draft",
@@ -8,10 +16,10 @@ export const TransactionStatus = z.enum([
 ]);
 
 export const Transaction = z.object({
-  pk: z.string(),
+  pk: TransactionId,
   sort: z.string(),
   charge: z.object({
-    amount: z.number().int().min(1),
+    amount: TransactionAmount,
     applicationFee: z.number().int().min(0),
     applicationFeeAmount: z.number().int().min(0),
     card: z.object({
