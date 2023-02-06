@@ -8,11 +8,7 @@ const Login = z.object({
 
 export const authRouter = Router();
 
-authRouter.get("/auth", (req, res) => {
-  res.send("/auth");
-});
-
-authRouter.post("/auth/login", (req, res) => {
+authRouter.post("/login", (req, res) => {
   try {
     Login.parse(req.body);
 

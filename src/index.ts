@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-app.use(authRouter);
+app.use("/auth", authRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
