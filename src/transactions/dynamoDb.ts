@@ -1,14 +1,14 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
-import { TransactionsType, Transactions } from "./types";
+import {
+  Transactions,
+  TransactionAmountType,
+  TransactionAmount,
+} from "./types";
 
 const TableName = "VitusPay-Resources_Transactions_dev";
 
-export interface DynamodbRepository {
-  getTransactions: () => Promise<TransactionsType>;
-}
-
-export function initDynamoDbRepository(): DynamodbRepository {
+export function initDynamoDbRepository() {
   // =============
   // Refactor Note
   // =============
@@ -18,15 +18,26 @@ export function initDynamoDbRepository(): DynamodbRepository {
 
   return {
     getTransactions: getTransactions(documentClient),
+    createTransaction: createTransaction(documentClient),
   };
 }
 
-function getTransactions(client: DynamoDBDocumentClient): any {
+function getTransactions(client: DynamoDBDocumentClient) {
   return async () => {
     const { Items } = await client.send(
       new ScanCommand({ TableName, Limit: 1 })
     );
 
     return Transactions.parse(Items);
+  };
+}
+
+function createTransaction(client: DynamoDBDocumentClient) {
+  return async (amount: TransactionAmountType) => {
+    if (client && TransactionAmount.parse(amount)) {
+      return "26bb301a-fb3d-4a70-84c2-fdb6a8ee59ab";
+    } else {
+      throw new Error("Could not create the transaction");
+    }
   };
 }
