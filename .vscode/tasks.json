@@ -15,9 +15,38 @@
       }
     },
     {
+      "label": "clean:env",
+      "type": "shell",
+      "command": "rm .*.env",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
+    {
       "label": "clean",
       "type": "npm",
       "script": "clean",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "create:thunderclientenv",
+      "type": "shell",
+      "command": "echo 'username=someone@vitusvet.com\npassword=123safeEnoughForMe!' > .thunderclient.env",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "presentation": {
         "echo": true,
         "reveal": "silent",
@@ -55,7 +84,13 @@
     },
     {
       "label": "init",
-      "dependsOn": ["clean:packages", "clean", "install", "build"],
+      "dependsOn": [
+        "clean:packages",
+        "create:thunderclientenv",
+        "clean",
+        "install",
+        "build"
+      ],
       "dependsOrder": "sequence"
     },
     {
