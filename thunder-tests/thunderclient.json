@@ -22,5 +22,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "4bba41f0-42a7-4618-bab1-ee52b07cd210",
+    "colId": "7e921944-6643-4f8c-8edc-180c51e1972f",
+    "containerId": "40afe6db-f911-421b-b066-3b70565ffa09",
+    "name": "get transactions",
+    "url": "/transactions",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-06T03:01:51.620Z",
+    "modified": "2023-02-06T03:02:43.912Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
