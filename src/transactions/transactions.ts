@@ -1,7 +1,28 @@
 import { Router } from "express";
+import { initDynamoDbRepository } from "./dynamoDb";
+import { TransactionType } from "./types";
 
-export const transactionsRouter = Router();
+interface GetTransactionsActions {
+  getTransactions: () => Promise<Array<TransactionType>>;
+}
 
-transactionsRouter.get("/", (req, res) => {
-  res.send("/");
-});
+export function initTransactionsRouter() {
+  const transactionsRouter = Router();
+  const dynamodbRepository = initDynamoDbRepository();
+
+  // =============
+  // Refactor Note
+  // =============
+  // In the future when there are multiple functions that require these
+  // arguments we can create a pipeline to initialize them rather than calling
+  // then one bye one like this
+  getTransactions(transactionsRouter, dynamodbRepository);
+
+  return transactionsRouter;
+}
+
+function getTransactions(router: Router, actions: GetTransactionsActions) {
+  router.get("/", (req, res) => {
+    res.send(actions.getTransactions());
+  });
+}
