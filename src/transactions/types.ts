@@ -7,9 +7,7 @@ const TransactionStatus = z.enum([
   "sending link",
 ]);
 
-type TransactionStatusType = z.infer<typeof TransactionStatus>;
-
-const Transaction = z.object({
+export const Transaction = z.object({
   pk: z.string(),
   sort: z.string(),
   charge: z.object({
