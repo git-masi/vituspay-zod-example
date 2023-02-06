@@ -36,5 +36,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "aa28cfb0-a410-4c57-b537-4ea85e7780ee",
+    "colId": "7e921944-6643-4f8c-8edc-180c51e1972f",
+    "containerId": "40afe6db-f911-421b-b066-3b70565ffa09",
+    "name": "create transaction",
+    "url": "/transactions",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-02-06T14:21:15.277Z",
+    "modified": "2023-02-06T14:22:38.311Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"amount\": 42\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
