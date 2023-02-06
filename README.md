@@ -24,6 +24,10 @@ Run the `init` task.
 
 See the section below on how to run tasks if you are unfamiliar.
 
+**IMPORTANT:** Running this task will delete certain files and folders so be careful when you use it.
+
+Once the init task is done change the variables in your .thunderclient.env file.
+
 ## Local development
 
 Local development is easy provided you have followed the instructions for setting up and initializing the project. There is a task that will get you started.
@@ -39,18 +43,17 @@ See the section below on how to run tasks if you are unfamiliar.
 Manual testing can be done with Thunder Client.
 
 - Install the Thunder Client extension.
-- Run this script to add a .env file for Thunder Client to use. Be sure to change the username and password.
+- Ensure you have environment variables set up. See section below.
+- Ensure your dev server is up and running. See the "Local development" section for more.
+- Make requests to the dev server using Thunder Client.
 
-```sh
-echo 'username=someone@vitusvet.com
-password=123safeEnoughForMe!' > .thunderclient.env
-```
-
-#### Troubleshooting Thunder Client
+#### Thunder Client env variables
 
 You need to ensure that you have a local environment set up and selected.
 
-If for some reason you do not have a local environment set up follow these images to add one including your .thunderclient.env file to access variables there.
+If for some reason you do not have a local environment set up follow these images to add one. Be sure to link your .thunderclient.env file to access variables there.
+
+If you don't have a .thunderclient.env file run the `create:thunderclientenv` task.
 
 ![Add local env in Thunder Client](./docs/images/add-local-environment-to-thunder-client.png)
 
