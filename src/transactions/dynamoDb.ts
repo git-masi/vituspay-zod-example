@@ -33,6 +33,8 @@ function getTransactions(client: DynamoDBDocumentClient) {
 }
 
 function createTransaction(client: DynamoDBDocumentClient) {
+  // This function doesn't do anything with DynamoDb.
+  // It's only here to show how creating a sum type `TransactionsRepository` works
   return async (amount: TransactionAmountType) => {
     if (client && TransactionAmount.parse(amount)) {
       return "26bb301a-fb3d-4a70-84c2-fdb6a8ee59ab";
