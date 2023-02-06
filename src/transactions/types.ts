@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const TransactionStatus = z.enum([
+export const TransactionStatus = z.enum([
   "link sent",
   "draft",
   "succeeded",
@@ -28,3 +28,9 @@ export const Transaction = z.object({
   created: z.number(),
   status: TransactionStatus,
 });
+
+export type TransactionType = z.infer<typeof Transaction>;
+
+export const Transactions = z.array(Transaction);
+
+export type TransactionsType = z.infer<typeof Transactions>;
