@@ -17,15 +17,15 @@ export const Transaction = z.object({
     card: z.object({
       brand: z.string(),
       holderFullName: z.string(),
-      last4: z.number(),
+      last4: z.number().int(),
     }),
+    // =============
+    // Refactor Note
+    // =============
+    // Zod has support for dates but it is not clear how to enforce a timestamp
+    // Using number until a better solution is found
+    created: z.number(),
   }),
-  // =============
-  // Refactor Note
-  // =============
-  // Zod has support for dates but it is not clear how to enforce a timestamp
-  // Using number until a better solution is found
-  created: z.number(),
   status: TransactionStatus,
 });
 
