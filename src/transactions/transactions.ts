@@ -28,10 +28,12 @@ function getTransactions(router: Router, actions: GetTransactionsActions) {
       res.send(await actions.getTransactions());
     } catch (error) {
       if (error instanceof ZodError) {
-        console.error(error);
+        console.error(error.issues);
         res.sendStatus(400);
         return;
       }
+
+      console.error(error);
 
       res.sendStatus(500);
     }
