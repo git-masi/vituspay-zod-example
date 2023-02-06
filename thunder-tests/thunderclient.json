@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-02-06T01:15:06.885Z",
-    "modified": "2023-02-06T01:19:55.971Z",
+    "modified": "2023-02-06T01:46:53.400Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -18,7 +18,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"emasi@vitusvet.com\",\n  \"password\": \"superSafe123\"\n}",
+      "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
       "form": []
     },
     "tests": []
