@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "869e0908-f3b4-49c1-9ec2-969903b0532c",
+    "colId": "7e921944-6643-4f8c-8edc-180c51e1972f",
+    "containerId": "15703cbf-cb5d-480e-908c-d514b945e9cc",
+    "name": "login",
+    "url": "/auth/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-06T01:15:06.885Z",
+    "modified": "2023-02-06T01:19:55.971Z",
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"emasi@vitusvet.com\",\n  \"password\": \"superSafe123\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]

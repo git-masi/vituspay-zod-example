@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "7e921944-6643-4f8c-8edc-180c51e1972f",
+    "colName": "local",
+    "created": "2023-02-06T01:14:37.501Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "15703cbf-cb5d-480e-908c-d514b945e9cc",
+        "name": "auth",
+        "containerId": "",
+        "created": "2023-02-06T01:14:58.896Z",
+        "sortNum": 10000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "options": {
+        "baseUrl": "http://localhost:3000"
+      }
+    }
+  }
+]
