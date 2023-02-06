@@ -1,3 +1,9 @@
 node_modules
 build
+
+# For security do not save .env files
 *.env
+
+# MacOS generates metadata about file movesments in the finder
+# We should not commit to GitHub
+**/.DS_STORE
