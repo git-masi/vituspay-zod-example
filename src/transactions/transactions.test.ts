@@ -3,13 +3,16 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { initTransactionsRouter } from "./transactions";
 import {
   TransactionAmountType,
+  TransactionId,
   Transactions,
   TransactionStatus,
 } from "./types";
 import request from "supertest";
+import bodyParser from "body-parser";
 
 describe("transactions service", () => {
   const app = express();
+  app.use(bodyParser.json());
   let repository = initInMemoryRepository();
   const router = initTransactionsRouter(repository);
 
@@ -30,6 +33,20 @@ describe("transactions service", () => {
       const res = await request(app).get("/");
 
       expect(Transactions.parse(res.body)).toBeTruthy();
+    });
+  });
+
+  describe("create transaction => POST /", () => {
+    it("should return status 201", async () => {
+      const res = await request(app).post("/").send({ amount: 42 });
+
+      expect(res.statusCode).toBe(201);
+    });
+
+    it("should return a transaction id", async () => {
+      const res = await request(app).post("/").send({ amount: 42 });
+
+      expect(TransactionId.parse(res.body.id)).toBeTruthy();
     });
   });
 });
