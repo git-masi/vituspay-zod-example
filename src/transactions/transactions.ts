@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ZodError } from "zod";
 import { initDynamoDbRepository } from "./dynamoDb";
 import { TransactionType } from "./types";
 
@@ -22,7 +23,17 @@ export function initTransactionsRouter() {
 }
 
 function getTransactions(router: Router, actions: GetTransactionsActions) {
-  router.get("/", (req, res) => {
-    res.send(actions.getTransactions());
+  router.get("/", async (req, res) => {
+    try {
+      res.send(await actions.getTransactions());
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.error(error);
+        res.sendStatus(400);
+        return;
+      }
+
+      res.sendStatus(500);
+    }
   });
 }
