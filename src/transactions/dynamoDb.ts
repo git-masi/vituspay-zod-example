@@ -1,5 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, QueryCommand } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 import { TransactionsType, Transactions } from "./types";
 
 const TableName = "VitusPay-Resources_Transactions_dev";
@@ -21,10 +21,10 @@ export function initDynamoDbRepository(): DynamodbRepository {
   };
 }
 
-function getTransactions(client: DynamoDBDocumentClient) {
+function getTransactions(client: DynamoDBDocumentClient): any {
   return async () => {
     const { Items } = await client.send(
-      new QueryCommand({ TableName, Limit: 10 })
+      new ScanCommand({ TableName, Limit: 1 })
     );
 
     return Transactions.parse(Items);
