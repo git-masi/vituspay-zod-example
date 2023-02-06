@@ -2,8 +2,11 @@ import { Router } from "express";
 import { z } from "zod";
 
 const Login = z.object({
-  username: z.string(),
-  password: z.string(),
+  username: z.string().email(),
+  password: z
+    .string()
+    .min(8)
+    .regex(/(?=.*[a-z])(?=.*[A-Z])/),
 });
 
 export const authRouter = Router();
